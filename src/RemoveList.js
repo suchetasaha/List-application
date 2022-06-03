@@ -70,7 +70,8 @@ const RemoveList = () => {
           <td className="border">{item.age}</td>
           <td className="border">{item.skill}</td><button className="button-gap" name={item.name} onClick={addJoinPeople}>
               +
-            </button>  <button className="button" name={item.name} onClick={handleRemoveItem}>
+            </button> 
+             <button className="button" name={item.name} onClick={handleRemoveItem}>
               -
             </button>
       </tr>
