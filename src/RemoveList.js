@@ -37,24 +37,32 @@ const RemoveList = () => {
 ]
 
   const [list, updateList] = useState(defaultList);
+  const [inputText, setInputText] = useState("");
 
   const addJoinPeople = (e) =>{
     let name = e.target.value;
-    updateList([...list, name]);
+    updateList([...list, {name : name}]);
     };
 
-  // const handleRemoveItem = (e) => {
-  //  const name = e.target.getAttribute("name")
-  //   updateList(list.filter(item => item.name !== name));
-  // };
-  const handleRemoveItem = (e) =>{
-    let name = e.target.value;
-    updateList(list.filter((e)=>(e !== name)))
-    };
-
+  const handleRemoveItem = (e) => {
+   const name = e.target.getAttribute("name")
+    updateList(list.filter(item => item.name !== name));
+  };
+  // const handleRemoveItem = (e) =>{
+  //   let name = e.target.value;
+  //   console.log(name)
+  //   updateList(list.filter((e)=>(e !== name)))
+  //   };
+    const changeText = (e) => {
+      updateList([...list, {name:e}]);
+    }
   return (
     <div className="top">
           <table>
+          <div class="form-group">
+                  <input type="text" value={inputText} onChange={(e) => setInputText(e.target.value)}   name="firstName" class="form-control"  placeholder="Enter Name" />
+                  <button onClick={() => changeText(inputText)} className="button">Add</button>
+               </div>
         <tr>
           <th className="border">Id</th>
           <th className="border">Name</th>
@@ -71,7 +79,7 @@ const RemoveList = () => {
           <td className="border">{item.skill}</td><button className="button-gap" name={item.name} onClick={addJoinPeople}>
               +
             </button> 
-             <button className="button" name={item.name} onClick={handleRemoveItem}>
+             <button className="button" name={item.nam} onClick={handleRemoveItem}>
               -
             </button>
       </tr>
